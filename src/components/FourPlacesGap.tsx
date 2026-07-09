@@ -12,34 +12,37 @@ export default function FourPlacesGap() {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-15%" });
   useGSAP(() => {
-    gsap.fromTo(sectionRef.current,
-      { scale: 0.94, borderRadius: "48px" },
-      {
-        scale: 1,
-        borderRadius: "0px",
-        ease: "none",
-        scrollTrigger: {
-          trigger: wrapperRef.current,
-          start: "top bottom",
-          end: "top top",
-          scrub: true,
+    let mm = gsap.matchMedia();
+    mm.add("(min-width: 768px)", () => {
+      gsap.fromTo(sectionRef.current,
+        { scale: 0.94, borderRadius: "48px" },
+        {
+          scale: 1,
+          borderRadius: "0px",
+          ease: "none",
+          scrollTrigger: {
+            trigger: wrapperRef.current,
+            start: "top bottom",
+            end: "top top",
+            scrub: true,
+          }
         }
-      }
-    );
-    gsap.fromTo(sectionRef.current,
-      { scale: 1, borderRadius: "0px" },
-      {
-        scale: 0.94,
-        borderRadius: "48px",
-        ease: "none",
-        scrollTrigger: {
-          trigger: wrapperRef.current,
-          start: "bottom bottom",
-          end: "bottom top",
-          scrub: true,
+      );
+      gsap.fromTo(sectionRef.current,
+        { scale: 1, borderRadius: "0px" },
+        {
+          scale: 0.94,
+          borderRadius: "48px",
+          ease: "none",
+          scrollTrigger: {
+            trigger: wrapperRef.current,
+            start: "bottom bottom",
+            end: "bottom top",
+            scrub: true,
+          }
         }
-      }
-    );
+      );
+    });
   }, { scope: wrapperRef });
   const containerVariants = {
     hidden: {},
@@ -283,7 +286,7 @@ export default function FourPlacesGap() {
         }
         @media (max-width: 560px) {
           .four-places-h2 {
-            font-size: clamp(42px, 11vw, 60px);
+            font-size: clamp(55px, 15vw, 80px);
           }
           .four-places-cards-stack {
              transform: none;
