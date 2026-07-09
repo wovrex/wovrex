@@ -4,7 +4,6 @@ import "@/styles/global.css";
 import Navbar from "@/components/Navbar";
 import SmoothScroll from "@/components/SmoothScroll";
 import Footer from "@/components/Footer";
-import Preloader from "@/components/Preloader";
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -133,7 +132,6 @@ export default function RootLayout({
         />
       </head>
       <body suppressHydrationWarning className={`${plusJakarta.variable} ${outfit.variable} ${ibmPlexMono.variable} ${barlowCondensed.variable}`} style={{ backgroundColor: '#F9F8F6' }}>
-        <Preloader />
         <SmoothScroll>
           <Navbar />
           <main>{children}</main>
