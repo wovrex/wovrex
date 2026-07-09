@@ -104,6 +104,10 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport = {
+  themeColor: "#F9F8F6",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -128,7 +132,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
       </head>
-      <body suppressHydrationWarning className={`${plusJakarta.variable} ${outfit.variable} ${ibmPlexMono.variable} ${barlowCondensed.variable}`}>
+      <body suppressHydrationWarning className={`${plusJakarta.variable} ${outfit.variable} ${ibmPlexMono.variable} ${barlowCondensed.variable}`} style={{ backgroundColor: '#F9F8F6' }}>
         <Preloader />
         <SmoothScroll>
           <Navbar />

@@ -18,14 +18,9 @@ export default function Preloader() {
       document.body.style.overflow = '';
     };
 
-    // Minimum display time for the branding to register (1.6s)
-    const minTimer = new Promise<void>((resolve) => setTimeout(resolve, 1600));
-
-    // Wait for fonts + minimum time, whichever is longer
-    Promise.all([
-      document.fonts.ready,
-      minTimer
-    ]).then(dismiss);
+    document.fonts.ready.then(() => {
+      setTimeout(dismiss, 100);
+    });
 
     return () => {
       document.body.style.overflow = '';
