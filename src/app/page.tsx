@@ -1,11 +1,14 @@
 import { Metadata } from "next";
+import dynamic from "next/dynamic";
 import Hero from "@/components/Hero";
-import FourPlacesGap from "@/components/FourPlacesGap";
-import Calculator from "@/components/Calculator";
-import Section4 from "@/components/Section4";
-import TestimonialsSection from "@/components/TestimonialsSection";
-import SectionFAQ from "@/components/SectionFAQ";
-import Section5 from "@/components/Section5";
+
+// Below-fold sections — code-split and lazy loaded so they never block initial paint
+const FourPlacesGap = dynamic(() => import("@/components/FourPlacesGap"), { ssr: true });
+const Calculator = dynamic(() => import("@/components/Calculator"), { ssr: true });
+const Section4 = dynamic(() => import("@/components/Section4"), { ssr: true });
+const TestimonialsSection = dynamic(() => import("@/components/TestimonialsSection"), { ssr: true });
+const SectionFAQ = dynamic(() => import("@/components/SectionFAQ"), { ssr: true });
+const Section5 = dynamic(() => import("@/components/Section5"), { ssr: true });
 
 export const metadata: Metadata = {
   description:
