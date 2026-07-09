@@ -2685,8 +2685,8 @@ body {
 .section4 .callout-right .hand-arrow {
     right: calc(100% + 16px); 
 }
-.section4 .arrow-path,
-.section4 .arrow-head {
+.section4 .s4-arrow-path,
+.section4 .s4-arrow-head {
     fill: none;
     stroke: #b3b0a1; 
     stroke-width: 1.5px; 
