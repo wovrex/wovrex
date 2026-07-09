@@ -1,0 +1,51 @@
+# WOVREX - Full Context
+
+> Revenue intelligence for established HVAC companies.
+
+## What is WOVREX?
+
+WOVREX is a revenue intelligence service built specifically for established HVAC companies. We help businesses with $1M to $20M+ in annual revenue uncover hidden revenue leaks that accumulate silently over years of operation.
+
+We are not a software company, a marketing agency, or a CRM. We look at the data that already exists inside a business (call logs, work orders, follow-up records, maintenance schedules) and cross-reference it to find patterns that no single system reveals on its own. Then we write down what we found in plain language with a dollar figure attached.
+
+## What does WOVREX find?
+
+Typical findings include:
+
+- Lapsed maintenance customers gone quiet for months, worth thousands per year in repeat service
+- After-hours calls that were never returned the same day, representing tens of thousands in lost bookable jobs annually
+- Estimates over $2,000 that received no follow-up contact after fourteen days
+- Dispatch routing inefficiencies where technicians cross the same neighborhoods on the same day
+- Maintenance memberships lapsing quietly with no renewal outreach logged
+- Inconsistent technician upselling where one technician recommends maintenance plans and the rest rarely do
+
+## How does WOVREX work?
+
+Three steps:
+
+1. We pull what already exists. No new software to install, no data migration. We look at call logs, work orders, follow-up records, and maintenance schedules however they are currently tracked.
+
+2. We cross-reference records. A call record next to a follow-up log next to a maintenance schedule tells the full story. We cross-reference by customer, check patterns across weeks, and flag nothing without at least two sources agreeing.
+
+3. We write down what it means. Not a dashboard to interpret yourself. A plain finding, in writing, with a number attached, delivered by a person. Written in the same language you would use with a technician, not a data analyst.
+
+## Who is WOVREX for?
+
+WOVREX works with HVAC companies that:
+- Have $1M to $20M+ in annual revenue
+- Are established businesses, not startups
+- Are willing to look closely at their operations, once
+
+## What does WOVREX believe?
+
+1. Reveal, do not sell. We are not trying to convince you of anything you cannot check yourself.
+2. Specific, not impressive. A real number beats a confident adjective every time.
+3. Different for everyone. No two businesses leak money the same way, so no two get the same answer.
+
+## Contact
+
+- Website: https://wovrex.site
+- Email: assistance@wovrex.site
+- Instagram: https://www.instagram.com/wovrex.hvac/
+- Facebook: https://www.facebook.com/wovrex.hvac/
+- LinkedIn: https://www.linkedin.com/company/wovrex/

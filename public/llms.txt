@@ -1,0 +1,19 @@
+# WOVREX
+
+> Revenue intelligence for established HVAC companies.
+
+WOVREX helps HVAC companies with $1M to $20M+ in annual revenue find hidden revenue leaks that accumulate silently over time. We do not sell software, dashboards, or leads. We look at what is already sitting in a business (call logs, work orders, follow-up records, maintenance schedules) and write down exactly what it means in plain language with a dollar figure attached.
+
+## Pages
+
+- [Home](https://wovrex.site): Overview of WOVREX, the revenue gap calculator, testimonials, and FAQ.
+- [How We Look](https://wovrex.site/how-we-look): The three-step process. We pull existing data, cross-reference it across systems, and deliver plain-language findings.
+- [Findings](https://wovrex.site/findings): Representative examples of what WOVREX typically uncovers, including lapsed maintenance, missed after-hours calls, abandoned estimates, dispatch routing waste, membership lapses, and technician upsell gaps.
+- [About](https://wovrex.site/about): Why WOVREX exists, what we believe, and who we work with.
+
+## Contact
+
+- Email: assistance@wovrex.site
+- Instagram: https://www.instagram.com/wovrex.hvac/
+- Facebook: https://www.facebook.com/wovrex.hvac/
+- LinkedIn: https://www.linkedin.com/company/wovrex/

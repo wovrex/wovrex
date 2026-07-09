@@ -1,0 +1,14 @@
+:root {
+  --background: #F9F8F6;
+  --foreground: #2A2A2A;
+}
+
+@keyframes marqueeUp {
+  from { transform: translateY(0%); }
+  to { transform: translateY(-50%); }
+}
+
+@keyframes marqueeDown {
+  from { transform: translateY(-50%); }
+  to { transform: translateY(0%); }
+}
