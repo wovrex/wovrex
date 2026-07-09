@@ -62,7 +62,6 @@ export default function FourPlacesGap() {
   return (
     <>
       <style dangerouslySetInnerHTML={{__html: `
-        @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500&display=swap');
         .four-places-wrapper {
           width: 100%;
           position: relative;
@@ -75,7 +74,7 @@ export default function FourPlacesGap() {
           display: flex;
           align-items: center;
           padding: clamp(80px, 12vh, 160px) clamp(24px, 5vw, 96px);
-          font-family: 'Barlow Condensed', sans-serif;
+          font-family: var(--font-barlow), 'Barlow Condensed', sans-serif;
           -webkit-font-smoothing: antialiased;
           overflow: hidden;
           will-change: transform, border-radius;
@@ -100,7 +99,7 @@ export default function FourPlacesGap() {
           color: #C9A15C;
           margin-bottom: clamp(16px, 2vw, 24px);
         }
-        .four-places-h1 {
+        .four-places-h2 {
           font-size: clamp(65px, 9vw, 135px);
           font-weight: 800;
           line-height: 0.85;
@@ -126,27 +125,27 @@ export default function FourPlacesGap() {
           display: inline-block;
           width: 0.22em;
         }
-        .four-places-h1 .line2 .gap-wrap {
+        .four-places-h2 .line2 .gap-wrap {
           display: inline-flex;
           position: relative;
           margin-left: 0.15em;
           cursor: pointer;
         }
-        .four-places-h1 .line2 .gap .char {
+        .four-places-h2 .line2 .gap .char {
           color: transparent;
           -webkit-text-stroke: 2px #C9A15C;
           transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .four-places-h1 .line2 .gap-wrap:hover .gap .char {
+        .four-places-h2 .line2 .gap-wrap:hover .gap .char {
           color: #C9A15C;
           -webkit-text-stroke: 0px transparent;
           transform: translateY(-8px) scale(1.05);
         }
-        .four-places-h1 .line2 .gap-wrap:hover .gap .char:nth-child(1) { transition-delay: 0.0s; }
-        .four-places-h1 .line2 .gap-wrap:hover .gap .char:nth-child(2) { transition-delay: 0.03s; }
-        .four-places-h1 .line2 .gap-wrap:hover .gap .char:nth-child(3) { transition-delay: 0.06s; }
-        .four-places-h1 .line2 .gap-wrap:hover .gap .char:nth-child(4) { transition-delay: 0.09s; }
-        .four-places-h1 .line2 .gap-underline {
+        .four-places-h2 .line2 .gap-wrap:hover .gap .char:nth-child(1) { transition-delay: 0.0s; }
+        .four-places-h2 .line2 .gap-wrap:hover .gap .char:nth-child(2) { transition-delay: 0.03s; }
+        .four-places-h2 .line2 .gap-wrap:hover .gap .char:nth-child(3) { transition-delay: 0.06s; }
+        .four-places-h2 .line2 .gap-wrap:hover .gap .char:nth-child(4) { transition-delay: 0.09s; }
+        .four-places-h2 .line2 .gap-underline {
           position: absolute;
           left: 0;
           right: 0;
@@ -156,7 +155,7 @@ export default function FourPlacesGap() {
           transform-origin: left;
           transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .four-places-h1 .line2 .gap-wrap:hover .gap-underline {
+        .four-places-h2 .line2 .gap-wrap:hover .gap-underline {
           transform: scaleX(0);
           transform-origin: right;
         }
@@ -216,7 +215,7 @@ export default function FourPlacesGap() {
           text-overflow: ellipsis;
         }
         .four-places-row .right {
-          font-family: 'IBM Plex Mono', monospace;
+          font-family: var(--font-ibm-plex-mono), 'IBM Plex Mono', monospace;
           font-size: clamp(10px, 0.85vw, 12px);
           color: #B8B6AD;
           white-space: nowrap;
@@ -283,7 +282,7 @@ export default function FourPlacesGap() {
           }
         }
         @media (max-width: 560px) {
-          .four-places-h1 {
+          .four-places-h2 {
             font-size: clamp(42px, 11vw, 60px);
           }
           .four-places-cards-stack {
@@ -318,8 +317,8 @@ export default function FourPlacesGap() {
         <div className="four-places-section" ref={sectionRef}>
           <div className="four-places-grid">
             <div className="four-places-text-col">
-              <motion.h1 
-                className="four-places-h1"
+              <motion.h2 
+                className="four-places-h2"
                 variants={containerVariants}
                 initial="hidden"
                 animate={isInView ? "visible" : "hidden"}
@@ -358,7 +357,7 @@ export default function FourPlacesGap() {
                     ></motion.span>
                   </span>
                 </div>
-              </motion.h1>
+              </motion.h2>
               <motion.p 
                 className="four-places-body-copy"
                 initial={{ opacity: 0, y: 20 }}

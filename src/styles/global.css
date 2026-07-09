@@ -2491,7 +2491,7 @@ body {
     text-align: center;
     width: 100%;
 }
-.section4-h1 {
+.section4-h2 {
     font-family: 'Outfit', sans-serif;
     font-weight: 600;
     color: var(--text-primary);
@@ -2740,7 +2740,7 @@ body {
     .section4 .closing-line { margin-top: 0; order: 5; }
 }
 @media (max-width: 480px) {
-    .section4-h1 { font-size: clamp(28px, 8vw, 36px); }
+    .section4-h2 { font-size: clamp(28px, 8vw, 36px); }
     .section4 .doc-card { width: 100%; }
 }
 .section5 {
@@ -3635,7 +3635,7 @@ body {
         border: 1px solid var(--border-color);
         padding: 16px;
     }
-    .section4-h1, .section5 h2, .testi-center-content h2, .section-faq h2 {
+    .section4-h2, .section5 h2, .testi-center-content h2, .section-faq h2 {
         font-size: clamp(28px, 8vw, 40px);
     }
     .faq-list {
@@ -3720,4 +3720,14 @@ body {
 @keyframes shimmer {
     0% { background-position: -200% 0; }
     100% { background-position: 200% 0; }
+}
+
+@keyframes marqueeUp {
+  from { transform: translateY(0%); }
+  to { transform: translateY(-50%); }
+}
+
+@keyframes marqueeDown {
+  from { transform: translateY(-50%); }
+  to { transform: translateY(0%); }
 }

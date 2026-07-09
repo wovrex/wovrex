@@ -9,6 +9,13 @@ export default function SectionFAQ() {
     setOpenIndex(openIndex === index ? null : index);
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent, index: number) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      toggleFaq(index);
+    }
+  };
+
   return (
     <section className="section-faq">
       <div className="center-col">
@@ -18,7 +25,14 @@ export default function SectionFAQ() {
 
         <div className="faq-list">
           <div className={`faq-item ${openIndex === 0 ? 'open' : ''}`}>
-            <div className="faq-q" onClick={() => toggleFaq(0)}>
+            <div 
+              className="faq-q" 
+              onClick={() => toggleFaq(0)}
+              onKeyDown={(e) => handleKeyDown(e, 0)}
+              role="button"
+              tabIndex={0}
+              aria-expanded={openIndex === 0}
+            >
               <div className="faq-q-text">What if you look and find nothing?</div>
               <div className="faq-icon"></div>
             </div>
@@ -30,7 +44,14 @@ export default function SectionFAQ() {
           </div>
 
           <div className={`faq-item ${openIndex === 1 ? 'open' : ''}`}>
-            <div className="faq-q" onClick={() => toggleFaq(1)}>
+            <div 
+              className="faq-q" 
+              onClick={() => toggleFaq(1)}
+              onKeyDown={(e) => handleKeyDown(e, 1)}
+              role="button"
+              tabIndex={0}
+              aria-expanded={openIndex === 1}
+            >
               <div className="faq-q-text">We already have a CRM. Isn&apos;t this the same thing?</div>
               <div className="faq-icon"></div>
             </div>
@@ -42,7 +63,14 @@ export default function SectionFAQ() {
           </div>
 
           <div className={`faq-item ${openIndex === 2 ? 'open' : ''}`}>
-            <div className="faq-q" onClick={() => toggleFaq(2)}>
+            <div 
+              className="faq-q" 
+              onClick={() => toggleFaq(2)}
+              onKeyDown={(e) => handleKeyDown(e, 2)}
+              role="button"
+              tabIndex={0}
+              aria-expanded={openIndex === 2}
+            >
               <div className="faq-q-text">What does this actually cost?</div>
               <div className="faq-icon"></div>
             </div>

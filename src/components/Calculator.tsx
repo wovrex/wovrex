@@ -46,7 +46,7 @@ export default function Calculator() {
           width: 100%;
           background-color: var(--bg-color);
           background-image: var(--bg-gradient);
-          font-family: 'Plus Jakarta Sans', sans-serif;
+          font-family: var(--font-plus-jakarta), 'Plus Jakarta Sans', sans-serif;
           padding: clamp(80px, 12vh, 160px) clamp(24px, 5vw, 96px);
           -webkit-font-smoothing: antialiased;
         }
@@ -85,8 +85,8 @@ export default function Calculator() {
           width: 100%;
         }
 
-        .calc-h1 {
-          font-family: 'Outfit', sans-serif;
+        .calc-h2 {
+          font-family: var(--font-outfit), 'Outfit', sans-serif;
           font-weight: 500;
           color: var(--text-primary);
           line-height: 1.1;
@@ -95,7 +95,7 @@ export default function Calculator() {
           font-size: clamp(38px, 5vw, 60px); 
           text-align: left;
         }
-        .calc-h1 .accent { 
+        .calc-h2 .accent { 
           color: #C9A15C; 
         }
 
@@ -150,7 +150,7 @@ export default function Calculator() {
         }
         .calc-input-wrap .prefix,
         .calc-input-wrap .suffix {
-          font-family: 'IBM Plex Mono', monospace;
+          font-family: var(--font-ibm-plex-mono), 'IBM Plex Mono', monospace;
           font-size: 13px;
           color: var(--text-secondary);
           flex-shrink: 0;
@@ -160,7 +160,7 @@ export default function Calculator() {
           border: none;
           background: transparent;
           outline: none;
-          font-family: 'IBM Plex Mono', monospace;
+          font-family: var(--font-ibm-plex-mono), 'IBM Plex Mono', monospace;
           font-size: 14px;
           font-weight: 500;
           color: var(--text-primary);
@@ -192,7 +192,7 @@ export default function Calculator() {
           text-align: left;
         }
         .calc-breakdown-value {
-          font-family: 'IBM Plex Mono', monospace;
+          font-family: var(--font-ibm-plex-mono), 'IBM Plex Mono', monospace;
           font-size: 14px;
           font-weight: 600;
           color: var(--text-primary);
@@ -210,7 +210,7 @@ export default function Calculator() {
         }
 
         .calc-result-number {
-          font-family: 'IBM Plex Mono', monospace;
+          font-family: var(--font-ibm-plex-mono), 'IBM Plex Mono', monospace;
           font-size: clamp(36px, 4vw, 46px);
           font-weight: 600;
           color: var(--text-primary);
@@ -237,7 +237,7 @@ export default function Calculator() {
           background: transparent;
           border: 1px solid var(--border-color);
           border-radius: 8px;
-          font-family: 'Plus Jakarta Sans', sans-serif;
+          font-family: var(--font-plus-jakarta), 'Plus Jakarta Sans', sans-serif;
           font-size: 13px;
           font-weight: 600;
           color: var(--text-primary);
@@ -419,14 +419,14 @@ export default function Calculator() {
           </div>
 
           <div className="calc-right-col">
-            <motion.h1 
-              className="calc-h1"
+            <motion.h2 
+              className="calc-h2"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             >
               You were promised a number <span className="accent">first.</span>
-            </motion.h1>
+            </motion.h2>
 
             <motion.p 
               className="calc-body-copy"

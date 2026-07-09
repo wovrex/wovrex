@@ -37,8 +37,8 @@ const Section4 = () => {
       "-=1.0"
     );
 
-    const arrowPaths = gsap.utils.toArray('.arrow-path') as SVGPathElement[];
-    const arrowHeads = gsap.utils.toArray('.arrow-head');
+    const arrowPaths = gsap.utils.toArray('.s4-arrow-path') as SVGPathElement[];
+    const arrowHeads = gsap.utils.toArray('.s4-arrow-head');
 
     arrowPaths.forEach((path) => {
       const length = path.getTotalLength();
@@ -46,13 +46,13 @@ const Section4 = () => {
     });
     gsap.set(arrowHeads, { opacity: 0 });
 
-    tl.to('.arrow-path', {
+    tl.to('.s4-arrow-path', {
       strokeDashoffset: 0,
       duration: 0.8,
       stagger: 0.2,
       ease: 'power2.out'
     }, "-=0.8")
-    .to('.arrow-head', {
+    .to('.s4-arrow-head', {
       opacity: 1,
       duration: 0.2,
       stagger: 0.2
@@ -65,15 +65,15 @@ const Section4 = () => {
       <div className="center-col">
 
         <div className="eyebrow s4-text-reveal">How a finding actually gets made</div>
-        <h1 className="section4-h1 s4-text-reveal">Nothing you saw earlier came from a guess.</h1>
+        <h2 className="section4-h2 s4-text-reveal">Nothing you saw earlier came from a guess.</h2>
         <p className="body-copy s4-text-reveal">Same document you saw a moment ago. Here&apos;s exactly where each part of it comes from.</p>
 
         <div className="exhibit">
 
           <div className="callout callout-left" id="callout1">
             <svg className="hand-arrow" viewBox="0 0 100 60">
-              <path className="arrow-path" d="M 100 50 C 60 50, 40 10, 0 10" vectorEffect="non-scaling-stroke" />
-              <path className="arrow-head" d="M 10 2 L 0 10 L 10 18" vectorEffect="non-scaling-stroke" />
+              <path className="s4-arrow-path" d="M 100 50 C 60 50, 40 10, 0 10" vectorEffect="non-scaling-stroke" />
+              <path className="s4-arrow-head" d="M 10 2 L 0 10 L 10 18" vectorEffect="non-scaling-stroke" />
             </svg>
             <div className="step-num">01</div>
             <div className="callout-text">We pull what already exists.</div>
@@ -82,8 +82,8 @@ const Section4 = () => {
 
           <div className="callout callout-right" id="callout2">
             <svg className="hand-arrow" viewBox="0 0 100 60">
-              <path className="arrow-path" d="M 0 40 C 30 10, 70 50, 100 30" vectorEffect="non-scaling-stroke" />
-              <path className="arrow-head" d="M 88 30 L 100 30 L 95 42" vectorEffect="non-scaling-stroke" />
+              <path className="s4-arrow-path" d="M 0 40 C 30 10, 70 50, 100 30" vectorEffect="non-scaling-stroke" />
+              <path className="s4-arrow-head" d="M 88 30 L 100 30 L 95 42" vectorEffect="non-scaling-stroke" />
             </svg>
             <div className="step-num">02</div>
             <div className="callout-text">We line it up against other records.</div>
@@ -103,8 +103,8 @@ const Section4 = () => {
 
           <div className="callout callout-left" id="callout3">
             <svg className="hand-arrow" viewBox="0 0 100 60">
-              <path className="arrow-path" d="M 100 10 C 60 10, 40 50, 0 50" vectorEffect="non-scaling-stroke" />
-              <path className="arrow-head" d="M 10 42 L 0 50 L 10 58" vectorEffect="non-scaling-stroke" />
+              <path className="s4-arrow-path" d="M 100 10 C 60 10, 40 50, 0 50" vectorEffect="non-scaling-stroke" />
+              <path className="s4-arrow-head" d="M 10 42 L 0 50 L 10 58" vectorEffect="non-scaling-stroke" />
             </svg>
             <div className="step-num">03</div>
             <div className="callout-text">We write down what it means.</div>

@@ -2,6 +2,7 @@
 
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import Image from 'next/image';
 
 const testimonials = [
   {
@@ -116,7 +117,7 @@ export default function TestimonialsSection() {
               <div className="testi-tail"></div>
             </div>
             <div className="testi-avatar">
-              <img src={t.avatar} alt={t.name} />
+              <Image src={t.avatar} alt={t.name} width={50} height={50} />
             </div>
           </motion.div>
         ))}

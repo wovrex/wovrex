@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Outfit, IBM_Plex_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans, Outfit, IBM_Plex_Mono, Barlow_Condensed } from "next/font/google";
 import "@/styles/global.css";
-import "./globals.css";
 import Navbar from "@/components/Navbar";
 import SmoothScroll from "@/components/SmoothScroll";
 import Footer from "@/components/Footer";
@@ -28,6 +27,14 @@ const ibmPlexMono = IBM_Plex_Mono({
   weight: ["400", "500", "600"],
   display: "swap",
   variable: "--font-ibm-plex-mono",
+  preload: false,
+});
+
+const barlowCondensed = Barlow_Condensed({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  display: "swap",
+  variable: "--font-barlow",
   preload: false,
 });
 
@@ -103,7 +110,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${plusJakarta.variable} ${outfit.variable} ${ibmPlexMono.variable}`}>
+    <html lang="en" className={`${plusJakarta.variable} ${outfit.variable} ${ibmPlexMono.variable} ${barlowCondensed.variable}`}>
       <head>
         {/* Preload Qurova Medium — used in Preloader, must load before first paint */}
         <link
@@ -121,7 +128,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
       </head>
-      <body suppressHydrationWarning className={`${plusJakarta.variable} ${outfit.variable} ${ibmPlexMono.variable}`}>
+      <body suppressHydrationWarning className={`${plusJakarta.variable} ${outfit.variable} ${ibmPlexMono.variable} ${barlowCondensed.variable}`}>
         <Preloader />
         <SmoothScroll>
           <Navbar />

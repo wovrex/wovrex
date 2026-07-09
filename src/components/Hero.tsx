@@ -126,7 +126,13 @@ function LazyVideo({ src, muted }: { src: string; muted: boolean }) {
   useEffect(() => {
     const el = videoRef.current;
     if (!el || !shouldLoad) return;
-    el.play().catch(() => {/* blocked — fine, loop will restart */});
+    let isMounted = true;
+    
+    el.play().catch(() => {
+      // autoplay blocked — fine, loop will restart
+    });
+    
+    return () => { isMounted = false; };
   }, [shouldLoad]);
 
   return (
