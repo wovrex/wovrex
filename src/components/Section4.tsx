@@ -72,8 +72,8 @@ const Section4 = () => {
 
           <div className="callout callout-left" id="callout1">
             <svg className="hand-arrow" viewBox="0 0 100 60">
-              <path className="s4-arrow-path" d="M 0 10 C 40 10, 60 50, 100 50" vectorEffect="non-scaling-stroke" />
-              <path className="s4-arrow-head" d="M 90 42 L 100 50 L 90 58" vectorEffect="non-scaling-stroke" />
+              <path className="s4-arrow-path" d="M 100 50 C 60 50, 40 10, 0 10" vectorEffect="non-scaling-stroke" />
+              <path className="s4-arrow-head" d="M 10 2 L 0 10 L 10 18" vectorEffect="non-scaling-stroke" />
             </svg>
             <div className="step-num">01</div>
             <div className="callout-text">We pull what already exists.</div>
@@ -82,8 +82,8 @@ const Section4 = () => {
 
           <div className="callout callout-right" id="callout2">
             <svg className="hand-arrow" viewBox="0 0 100 60">
-              <path className="s4-arrow-path" d="M 100 30 C 70 50, 30 10, 0 40" vectorEffect="non-scaling-stroke" />
-              <path className="s4-arrow-head" d="M 10 32 L 0 40 L 10 48" vectorEffect="non-scaling-stroke" />
+              <path className="s4-arrow-path" d="M 0 40 C 30 10, 70 50, 100 30" vectorEffect="non-scaling-stroke" />
+              <path className="s4-arrow-head" d="M 88 30 L 100 30 L 95 42" vectorEffect="non-scaling-stroke" />
             </svg>
             <div className="step-num">02</div>
             <div className="callout-text">We line it up against other records.</div>
@@ -103,8 +103,8 @@ const Section4 = () => {
 
           <div className="callout callout-left" id="callout3">
             <svg className="hand-arrow" viewBox="0 0 100 60">
-              <path className="s4-arrow-path" d="M 0 50 C 40 50, 60 10, 100 10" vectorEffect="non-scaling-stroke" />
-              <path className="s4-arrow-head" d="M 90 2 L 100 10 L 90 18" vectorEffect="non-scaling-stroke" />
+              <path className="s4-arrow-path" d="M 100 10 C 60 10, 40 50, 0 50" vectorEffect="non-scaling-stroke" />
+              <path className="s4-arrow-head" d="M 10 42 L 0 50 L 10 58" vectorEffect="non-scaling-stroke" />
             </svg>
             <div className="step-num">03</div>
             <div className="callout-text">We write down what it means.</div>
