@@ -28,8 +28,30 @@ const videosCol2 = [
 export default function Hero() {
   const [audioUnlocked, setAudioUnlocked] = useState(false);
   const [fadeNotice, setFadeNotice] = useState(false);
+  const [activeVideoId, setActiveVideoId] = useState<string | null>(null);
+  const [isHoverEnabled, setIsHoverEnabled] = useState(true);
+
   const heroRef = useRef(null);
   const containerRef = useRef(null);
+
+  useEffect(() => {
+    // Detect touch device
+    const checkPointer = () => {
+      setIsHoverEnabled(!window.matchMedia("(pointer: coarse)").matches);
+    };
+    checkPointer();
+    
+    const handleScroll = () => {
+      if (window.matchMedia("(pointer: coarse)").matches) {
+        setActiveVideoId(null);
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   useGSAP(() => {
     gsap.to(containerRef.current, {
@@ -79,19 +101,27 @@ export default function Hero() {
 
         <div className="hero-visuals" id="heroVisuals">
           <MarqueeColumn
+            colId="col1"
             videos={videosCol1}
             direction="up"
             audioUnlocked={audioUnlocked}
             setAudioUnlocked={setAudioUnlocked}
             setFadeNotice={setFadeNotice}
+            activeVideoId={activeVideoId}
+            setActiveVideoId={setActiveVideoId}
+            isHoverEnabled={isHoverEnabled}
           />
           <MarqueeColumn
+            colId="col2"
             videos={videosCol2}
             direction="down"
             audioUnlocked={audioUnlocked}
             setAudioUnlocked={setAudioUnlocked}
             setFadeNotice={setFadeNotice}
             offset
+            activeVideoId={activeVideoId}
+            setActiveVideoId={setActiveVideoId}
+            isHoverEnabled={isHoverEnabled}
           />
         </div>
       </motion.div>
@@ -142,7 +172,7 @@ function LazyVideo({ src, muted, isPlaying = true }: { src: string; muted: boole
       className="hero-video"
       src={shouldLoad ? src : undefined}
       poster={src.replace('/vid/', '/vid_poster/').replace('.mp4', '.webp')}
-      preload="none"
+      preload={shouldLoad ? "metadata" : "none"}
       loop
       muted={muted}
       playsInline
@@ -157,20 +187,7 @@ function LazyVideo({ src, muted, isPlaying = true }: { src: string; muted: boole
   );
 }
 
-function MarqueeColumn({ videos, direction, audioUnlocked, setAudioUnlocked, setFadeNotice, offset }: any) {
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setActiveIndex(null);
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
+function MarqueeColumn({ videos, direction, audioUnlocked, setAudioUnlocked, setFadeNotice, offset, colId, activeVideoId, setActiveVideoId, isHoverEnabled }: any) {
   const doubledVideos = [...videos, ...videos];
 
   return (
@@ -184,21 +201,22 @@ function MarqueeColumn({ videos, direction, audioUnlocked, setAudioUnlocked, set
           animationDuration: direction === 'up' ? '25s' : '30s',
           animationTimingFunction: 'linear',
           animationIterationCount: 'infinite',
-          animationPlayState: activeIndex !== null ? 'paused' : 'running',
+          animationPlayState: activeVideoId !== null ? 'paused' : 'running',
         }}
       >
         {doubledVideos.map((vid, idx) => {
-          const isActive = activeIndex === idx;
+          const id = `${colId}-${idx}`;
+          const isActive = activeVideoId === id;
           
           let isPlaying = isActive;
           let showOverlay = !isActive;
           let isMuted = isActive ? !audioUnlocked : true;
-          let overlayText = "Tap to Play";
+          let overlayText = isHoverEnabled ? "Hover to Play" : "Tap to Play";
           let overlayIcon = <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>;
 
           if (isActive && !audioUnlocked) {
             showOverlay = true;
-            overlayText = "Tap for Sound";
+            overlayText = isHoverEnabled ? "Click for Sound" : "Tap for Sound";
             overlayIcon = (
               <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
                 <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z" />
@@ -210,11 +228,28 @@ function MarqueeColumn({ videos, direction, audioUnlocked, setAudioUnlocked, set
             <div
               className="video-wrapper"
               key={idx}
+              onMouseEnter={() => {
+                if (isHoverEnabled) {
+                  setActiveVideoId(id);
+                }
+              }}
+              onMouseLeave={() => {
+                if (isHoverEnabled && activeVideoId === id) {
+                  setActiveVideoId(null);
+                }
+              }}
               onClick={() => {
-                if (activeIndex === idx) {
-                  setActiveIndex(null);
+                if (!isHoverEnabled) {
+                  if (activeVideoId === id) {
+                    setActiveVideoId(null);
+                  } else {
+                    setActiveVideoId(id);
+                    if (!audioUnlocked) {
+                      setAudioUnlocked(true);
+                      setFadeNotice(true);
+                    }
+                  }
                 } else {
-                  setActiveIndex(idx);
                   if (!audioUnlocked) {
                     setAudioUnlocked(true);
                     setFadeNotice(true);
