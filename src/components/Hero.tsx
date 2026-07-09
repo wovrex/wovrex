@@ -100,7 +100,7 @@ export default function Hero() {
 }
 
 // Lazy video — only starts downloading when it enters the viewport (200px early buffer)
-function LazyVideo({ src, muted }: { src: string; muted: boolean }) {
+function LazyVideo({ src, muted, isPlaying = true }: { src: string; muted: boolean; isPlaying?: boolean }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [shouldLoad, setShouldLoad] = useState(false);
 
@@ -122,24 +122,26 @@ function LazyVideo({ src, muted }: { src: string; muted: boolean }) {
     return () => observer.disconnect();
   }, []);
 
-  // Once src is assigned, attempt autoplay
+  // Play/pause logic based on isPlaying and shouldLoad
   useEffect(() => {
     const el = videoRef.current;
     if (!el || !shouldLoad) return;
-    let isMounted = true;
     
-    el.play().catch(() => {
-      // autoplay blocked — fine, loop will restart
-    });
-    
-    return () => { isMounted = false; };
-  }, [shouldLoad]);
+    if (isPlaying) {
+      el.play().catch(() => {
+        // autoplay blocked
+      });
+    } else {
+      el.pause();
+    }
+  }, [shouldLoad, isPlaying]);
 
   return (
     <video
       ref={videoRef}
       className="hero-video"
       src={shouldLoad ? src : undefined}
+      poster={src.replace('/vid/', '/vid_poster/').replace('.mp4', '.webp')}
       preload="none"
       loop
       muted={muted}
@@ -157,12 +159,33 @@ function LazyVideo({ src, muted }: { src: string; muted: boolean }) {
 
 function MarqueeColumn({ videos, direction, audioUnlocked, setAudioUnlocked, setFadeNotice, offset }: any) {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+  const [activeMobileIndex, setActiveMobileIndex] = useState<number | null>(null);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    const handleScroll = () => {
+      if (window.innerWidth <= 768) {
+        setActiveMobileIndex(null);
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   const doubledVideos = [...videos, ...videos];
 
   return (
     <div
       className={`marquee-column ${offset ? 'video-offset' : ''}`}
-      onMouseLeave={() => setHoveredIndex(null)}
+      onMouseLeave={() => !isMobile && setHoveredIndex(null)}
     >
       <div
         className="marquee-track"
@@ -171,37 +194,72 @@ function MarqueeColumn({ videos, direction, audioUnlocked, setAudioUnlocked, set
           animationDuration: direction === 'up' ? '25s' : '30s',
           animationTimingFunction: 'linear',
           animationIterationCount: 'infinite',
-          animationPlayState: hoveredIndex !== null ? 'paused' : 'running',
+          animationPlayState: (hoveredIndex !== null || activeMobileIndex !== null) ? 'paused' : 'running',
         }}
       >
         {doubledVideos.map((vid, idx) => {
           const isHovered = hoveredIndex === idx;
-          const showOverlay = !audioUnlocked;
-          const isMuted = isHovered ? !audioUnlocked : true;
+          const isActiveMobile = activeMobileIndex === idx;
+          
+          let isPlaying = true;
+          let showOverlay = false;
+          let isMuted = true;
+          let overlayText = "Tap for Sound";
+          let overlayIcon = (
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+              <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z" />
+            </svg>
+          );
+
+          if (isMobile) {
+            isPlaying = isActiveMobile;
+            if (!isActiveMobile) {
+              showOverlay = true;
+              overlayText = "Tap to Play";
+              overlayIcon = <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>;
+            } else {
+              showOverlay = !audioUnlocked;
+            }
+            isMuted = isActiveMobile ? !audioUnlocked : true;
+          } else {
+            isPlaying = true;
+            showOverlay = !audioUnlocked;
+            isMuted = isHovered ? !audioUnlocked : true;
+          }
 
           return (
             <div
               className="video-wrapper"
               key={idx}
-              onMouseEnter={() => setHoveredIndex(idx)}
+              onMouseEnter={() => !isMobile && setHoveredIndex(idx)}
               onMouseLeave={() => {
-                if (hoveredIndex === idx) setHoveredIndex(null);
+                if (!isMobile && hoveredIndex === idx) setHoveredIndex(null);
               }}
               onClick={() => {
-                if (hoveredIndex !== idx) setHoveredIndex(idx);
-                if (!audioUnlocked) {
-                  setAudioUnlocked(true);
-                  setFadeNotice(true);
+                if (isMobile) {
+                  if (activeMobileIndex === idx) {
+                    setActiveMobileIndex(null);
+                  } else {
+                    setActiveMobileIndex(idx);
+                    if (!audioUnlocked) {
+                      setAudioUnlocked(true);
+                      setFadeNotice(true);
+                    }
+                  }
+                } else {
+                  if (hoveredIndex !== idx) setHoveredIndex(idx);
+                  if (!audioUnlocked) {
+                    setAudioUnlocked(true);
+                    setFadeNotice(true);
+                  }
                 }
               }}
             >
-              <LazyVideo src={vid} muted={isMuted} />
+              <LazyVideo src={vid} muted={isMuted} isPlaying={isPlaying} />
               {showOverlay && (
                 <div className="sound-overlay">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                    <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z" />
-                  </svg>
-                  <span>Tap for Sound</span>
+                  {overlayIcon}
+                  <span>{overlayText}</span>
                 </div>
               )}
             </div>
