@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap');
+/* Google Fonts are loaded optimally via next/font in layout.tsx — no @import needed here */
 :root {
     --bg-color: #F9F8F6;
     --bg-gradient: radial-gradient(circle at 50% 0%, #FFFFFF 0%, #F9F8F6 80%);
@@ -19,24 +19,28 @@
     src: url('/fonts/qurova/QurovaDEMO-Medium.otf') format('opentype');
     font-weight: 500;
     font-style: normal;
+    font-display: block;
 }
 @font-face {
     font-family: 'Qurova';
     src: url('/fonts/qurova/QurovaDEMO-Regular.otf') format('opentype');
     font-weight: 400;
     font-style: normal;
+    font-display: block;
 }
 @font-face {
     font-family: 'Qurova';
     src: url('/fonts/qurova/QurovaDEMO-SemiBold.otf') format('opentype');
     font-weight: 600;
     font-style: normal;
+    font-display: block;
 }
 @font-face {
     font-family: 'Gopron';
     src: url('/fonts/gopron.regular.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
+    font-display: block;
 }
 * {
     margin: 0;
@@ -48,12 +52,16 @@ html, body {
     width: 100%;
 }
 body {
-    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    font-family: var(--font-plus-jakarta), var(--font-outfit), system-ui, -apple-system, sans-serif;
     background-color: var(--bg-color);
     background-image: var(--bg-gradient);
     color: var(--text-primary);
     line-height: 1.5;
     min-height: 100vh;
+    /* Prevent invisible text during font load */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
 }
 .navbar {
     width: 100%;
@@ -372,6 +380,16 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
+    mask-image: radial-gradient(white, black);
+    transform: translateZ(0);
+}
+.video-wrapper .hero-video {
+    border-radius: 24px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 .video-offset {
     transform: translateY(30px); 

@@ -9,15 +9,25 @@ export default function Preloader() {
   useEffect(() => {
     // Lock scroll while loading
     document.body.style.overflow = 'hidden';
-    
-    // A calm 2.2 second presentation
-    const timer = setTimeout(() => {
+
+    // Wait for ALL fonts (including Qurova) to be fully loaded
+    // before allowing the preloader to exit. This guarantees
+    // zero font-stutter on first render on Vercel.
+    const dismiss = () => {
       setIsLoading(false);
       document.body.style.overflow = '';
-    }, 2200);
+    };
+
+    // Minimum display time for the branding to register (1.6s)
+    const minTimer = new Promise<void>((resolve) => setTimeout(resolve, 1600));
+
+    // Wait for fonts + minimum time, whichever is longer
+    Promise.all([
+      document.fonts.ready,
+      minTimer
+    ]).then(dismiss);
 
     return () => {
-      clearTimeout(timer);
       document.body.style.overflow = '';
     };
   }, []);
@@ -29,7 +39,7 @@ export default function Preloader() {
           initial={{ opacity: 1 }}
           exit={{ 
             y: "-100vh", 
-            transition: { duration: 0.9, ease: [0.76, 0, 0.24, 1] } 
+            transition: { duration: 0.85, ease: [0.76, 0, 0.24, 1] } 
           }}
           style={{
             position: 'fixed',
@@ -49,18 +59,18 @@ export default function Preloader() {
             <motion.h1
               initial={{ y: 80, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+              transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
               style={{
                 fontFamily: "'Qurova', sans-serif",
-                fontSize: 'clamp(2rem, 4vw, 3rem)',
                 fontWeight: 500,
+                fontSize: 'clamp(2rem, 4vw, 3rem)',
                 color: '#2A2A2A',
                 letterSpacing: '-0.5px',
                 margin: 0,
                 lineHeight: 1
               }}
             >
-              WOVREX
+              wovrex
             </motion.h1>
           </div>
           
@@ -68,7 +78,7 @@ export default function Preloader() {
             <motion.div
               initial={{ x: '-100%' }}
               animate={{ x: '0%' }}
-              transition={{ duration: 1.5, ease: [0.76, 0, 0.24, 1], delay: 0.4 }}
+              transition={{ duration: 1.4, ease: [0.76, 0, 0.24, 1], delay: 0.3 }}
               style={{
                 width: '100%',
                 height: '100%',

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Plus_Jakarta_Sans, Outfit, IBM_Plex_Mono } from "next/font/google";
 import "@/styles/global.css";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
@@ -12,6 +12,23 @@ const plusJakarta = Plus_Jakarta_Sans({
   weight: ["400", "500", "600", "700", "800"],
   display: "swap",
   variable: "--font-plus-jakarta",
+  preload: true,
+});
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
+  variable: "--font-outfit",
+  preload: true,
+});
+
+const ibmPlexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  display: "swap",
+  variable: "--font-ibm-plex-mono",
+  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -86,20 +103,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={plusJakarta.variable}>
+    <html lang="en" className={`${plusJakarta.variable} ${outfit.variable} ${ibmPlexMono.variable}`}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        {/* Preload Qurova Medium — used in Preloader, must load before first paint */}
         <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
+          rel="preload"
+          href="/fonts/qurova/QurovaDEMO-Medium.otf"
+          as="font"
+          type="font/otf"
           crossOrigin="anonymous"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Caveat:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Jost:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
-          rel="stylesheet"
+          rel="preload"
+          href="/fonts/qurova/QurovaDEMO-Regular.otf"
+          as="font"
+          type="font/otf"
+          crossOrigin="anonymous"
         />
       </head>
-      <body suppressHydrationWarning>
+      <body suppressHydrationWarning className={`${plusJakarta.variable} ${outfit.variable} ${ibmPlexMono.variable}`}>
         <Preloader />
         <SmoothScroll>
           <Navbar />
