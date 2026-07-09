@@ -41,9 +41,13 @@ export default function Hero() {
     };
     checkPointer();
     
+    let lastScrollY = window.scrollY;
     const handleScroll = () => {
-      if (window.matchMedia("(pointer: coarse)").matches) {
-        setActiveVideoId(null);
+      if (Math.abs(window.scrollY - lastScrollY) > 15) {
+        if (window.matchMedia("(pointer: coarse)").matches) {
+          setActiveVideoId(null);
+        }
+        lastScrollY = window.scrollY;
       }
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -159,12 +163,21 @@ function LazyVideo({ src, muted, isPlaying = true }: { src: string; muted: boole
     
     if (isPlaying) {
       el.play().catch(() => {
-        // autoplay blocked
+        // autoplay blocked - fallback to muted if necessary
+        el.muted = true;
+        el.play().catch(() => {});
       });
     } else {
       el.pause();
     }
   }, [shouldLoad, isPlaying]);
+
+  // Sync muted property robustly
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.muted = muted;
+    }
+  }, [muted]);
 
   return (
     <video
