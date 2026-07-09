@@ -41,13 +41,9 @@ export default function Hero() {
     };
     checkPointer();
     
-    let lastScrollY = window.scrollY;
     const handleScroll = () => {
-      if (Math.abs(window.scrollY - lastScrollY) > 15) {
-        if (window.matchMedia("(pointer: coarse)").matches) {
-          setActiveVideoId(null);
-        }
-        lastScrollY = window.scrollY;
+      if (window.matchMedia("(pointer: coarse)").matches) {
+        setActiveVideoId(null);
       }
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -163,21 +159,12 @@ function LazyVideo({ src, muted, isPlaying = true }: { src: string; muted: boole
     
     if (isPlaying) {
       el.play().catch(() => {
-        // autoplay blocked - fallback to muted if necessary
-        el.muted = true;
-        el.play().catch(() => {});
+        // autoplay blocked
       });
     } else {
       el.pause();
     }
   }, [shouldLoad, isPlaying]);
-
-  // Sync muted property robustly
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.muted = muted;
-    }
-  }, [muted]);
 
   return (
     <video
@@ -224,7 +211,7 @@ function MarqueeColumn({ videos, direction, audioUnlocked, setAudioUnlocked, set
           let isPlaying = isActive;
           let showOverlay = !isActive;
           let isMuted = isActive ? !audioUnlocked : true;
-          let overlayText = isHoverEnabled ? "Hover to Play" : "Tap to Play";
+          let overlayText = isHoverEnabled ? "Click to Play" : "Tap to Play";
           let overlayIcon = <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>;
 
           if (isActive && !audioUnlocked) {
@@ -241,28 +228,16 @@ function MarqueeColumn({ videos, direction, audioUnlocked, setAudioUnlocked, set
             <div
               className="video-wrapper"
               key={idx}
-              onMouseEnter={() => {
-                if (isHoverEnabled) {
-                  setActiveVideoId(id);
-                }
-              }}
               onMouseLeave={() => {
                 if (isHoverEnabled && activeVideoId === id) {
                   setActiveVideoId(null);
                 }
               }}
               onClick={() => {
-                if (!isHoverEnabled) {
-                  if (activeVideoId === id) {
-                    setActiveVideoId(null);
-                  } else {
-                    setActiveVideoId(id);
-                    if (!audioUnlocked) {
-                      setAudioUnlocked(true);
-                      setFadeNotice(true);
-                    }
-                  }
+                if (activeVideoId === id) {
+                  setActiveVideoId(null);
                 } else {
+                  setActiveVideoId(id);
                   if (!audioUnlocked) {
                     setAudioUnlocked(true);
                     setFadeNotice(true);
