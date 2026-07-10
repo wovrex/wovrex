@@ -138,6 +138,16 @@ export default function RootLayout({
       </head>
       <body suppressHydrationWarning className={`${plusJakarta.variable} ${outfit.variable} ${ibmPlexMono.variable} ${barlowCondensed.variable}`} style={{ backgroundColor: '#F9F8F6' }}>
         <Script src="https://assets.calendly.com/assets/external/widget.js" strategy="afterInteractive" />
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-TNP5N0LR4H" strategy="afterInteractive" />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-TNP5N0LR4H');
+          `}
+        </Script>
         <Script id="clarity-script" strategy="afterInteractive">
           {`
             (function(c,l,a,r,i,t,y){
