@@ -58,8 +58,6 @@ export default async function ArticlePage({ params }: { params: Params }) {
         <header className="article-header">
           <h1>{article.title}</h1>
           <div className="article-header-meta">
-            <span>{article.publishedAt}</span>
-            <span>&bull;</span>
             <span>{article.readTime}</span>
           </div>
         </header>

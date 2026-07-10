@@ -35,8 +35,6 @@ export default function ArticlesPage() {
         {articles.map((article) => (
           <Link href={`/articles/${article.slug}`} key={article.id} className="article-card">
             <div className="article-meta">
-              <span>{article.publishedAt}</span>
-              <span>&bull;</span>
               <span>{article.readTime}</span>
             </div>
             <h2>{article.title}</h2>
