@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Link from "next/link";
 import "./about.css";
 
 export const metadata: Metadata = {
@@ -170,9 +171,9 @@ export default function About() {
       >
         <h2>Curious what we&apos;d find in yours?</h2>
         <p>Fifteen minutes. No slide deck. No pressure either way.</p>
-        <button className="cta-button">
+        <Link href="/book" className="cta-button">
           Check the rest with us <span>&rarr;</span>
-        </button>
+        </Link>
         <div className="fine-print">
           We&apos;ll tell you honestly if we can help.
         </div>

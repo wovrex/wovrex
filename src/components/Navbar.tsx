@@ -67,7 +67,7 @@ export default function Navbar() {
           </div>
 
           <div className="navbar-cta-container">
-            <Link href="/" className="cta-button">
+            <Link href="/book" className="cta-button">
               Take a closer look
             </Link>
           </div>

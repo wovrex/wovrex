@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Link from "next/link";
 import "./how-we-look.css";
 
 export const metadata: Metadata = {
@@ -158,7 +159,7 @@ export default function HowWeLook() {
           No two businesses get the same three findings. The process is
           identical. What it turns up never is.
         </p>
-        <button className="testi-cta">Check the rest with us</button>
+        <Link href="/book" className="testi-cta">Check the rest with us</Link>
         <div className="fine-print">Fifteen minutes. No slide deck.</div>
       </section>
     </div>

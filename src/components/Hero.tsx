@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from 'react';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
@@ -94,8 +95,8 @@ export default function Hero() {
             WOVREX helps established <strong>HVAC</strong> companies understand what quietly slips away between all of it.
           </p>
           <div className="hero-ctas">
-            <a href="#" className="cta-button">See what we see</a>
-            <a href="#" className="cta-button secondary-cta">How we uncover it</a>
+            <Link href="/book" className="cta-button">See what we see</Link>
+            <Link href="/how-we-look" className="cta-button secondary-cta">How we uncover it</Link>
           </div>
         </div>
 
