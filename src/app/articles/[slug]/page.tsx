@@ -5,8 +5,11 @@ import { articles } from "@/data/articles";
 import BookCTA from "@/components/BookCTA";
 import "./article.css";
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const article = articles.find((a) => a.slug === params.slug);
+type Params = Promise<{ slug: string }>;
+
+export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+  const { slug } = await params;
+  const article = articles.find((a) => a.slug === slug);
   
   if (!article) {
     return {
@@ -37,8 +40,9 @@ export function generateStaticParams() {
   }));
 }
 
-export default function ArticlePage({ params }: { params: { slug: string } }) {
-  const article = articles.find((a) => a.slug === params.slug);
+export default async function ArticlePage({ params }: { params: Params }) {
+  const { slug } = await params;
+  const article = articles.find((a) => a.slug === slug);
 
   if (!article) {
     notFound();
