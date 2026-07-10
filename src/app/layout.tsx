@@ -3,8 +3,9 @@ import Script from "next/script";
 import { Plus_Jakarta_Sans, Outfit, IBM_Plex_Mono, Barlow_Condensed } from "next/font/google";
 import "@/styles/global.css";
 import Navbar from "@/components/Navbar";
-import SmoothScroll from "@/components/SmoothScroll";
 import Footer from "@/components/Footer";
+import SmoothScroll from "@/components/SmoothScroll";
+import CalendlyModal from "@/components/CalendlyModal";
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -132,14 +133,17 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
         <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
+        <link rel="preconnect" href="https://assets.calendly.com" />
+        <link rel="preconnect" href="https://calendly.com" />
       </head>
       <body suppressHydrationWarning className={`${plusJakarta.variable} ${outfit.variable} ${ibmPlexMono.variable} ${barlowCondensed.variable}`} style={{ backgroundColor: '#F9F8F6' }}>
-        <Script src="https://assets.calendly.com/assets/external/widget.js" strategy="lazyOnload" />
+        <Script src="https://assets.calendly.com/assets/external/widget.js" strategy="afterInteractive" />
         <SmoothScroll>
           <Navbar />
           <main>{children}</main>
           <Footer />
         </SmoothScroll>
+        <CalendlyModal />
       </body>
     </html>
   );
