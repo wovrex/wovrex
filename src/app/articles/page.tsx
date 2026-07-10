@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 export default function ArticlesPage() {
   return (
     <div className="articles-page-wrapper">
-      <section className="articles-hero">
+      <section className="page-hero">
         <div className="eyebrow">Revenue Insights</div>
         <h1>
           Why busy doesn't always mean <span className="accent">profitable.</span>
