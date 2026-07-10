@@ -1,0 +1,86 @@
+.booking-confirmed-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 24px;
+  background-color: var(--background);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.bc-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  font-weight: 600;
+  color: #C9A15C;
+  margin-bottom: 24px;
+  letter-spacing: 0.1em;
+  opacity: 0;
+  animation: slideUpFade 0.6s ease-out forwards;
+}
+
+.booking-confirmed-container h1 {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+  opacity: 0;
+  animation: slideUpFade 0.6s ease-out 0.1s forwards;
+}
+
+.booking-confirmed-container p {
+  font-size: clamp(15px, 2vw, 18px);
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 480px;
+  margin-bottom: 40px;
+  opacity: 0;
+  animation: slideUpFade 0.6s ease-out 0.2s forwards;
+}
+
+.bc-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-decoration: none;
+  padding: 12px 24px;
+  border: 1px solid #DAD7C9;
+  border-radius: 8px;
+  background: #FFFFFF;
+  transition: all 0.2s ease;
+  opacity: 0;
+  animation: slideUpFade 0.6s ease-out 0.3s forwards;
+}
+
+.bc-back-btn svg {
+  transition: transform 0.2s ease;
+}
+
+.bc-back-btn:hover {
+  background: #F8F7F3;
+  border-color: #C9A15C;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.bc-back-btn:hover svg {
+  transform: translateX(-3px);
+}
+
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
