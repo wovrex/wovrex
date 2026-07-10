@@ -2,7 +2,9 @@
 
 > Revenue intelligence for established HVAC companies.
 
-WOVREX helps HVAC companies with $1M to $20M+ in annual revenue find hidden revenue leaks that accumulate silently over time. We do not sell software, dashboards, or leads. We look at what is already sitting in a business (call logs, work orders, follow-up records, maintenance schedules) and write down exactly what it means in plain language with a dollar figure attached.
+WOVREX helps HVAC companies with $1M to $20M+ in annual revenue find hidden revenue leaks that accumulate silently over time. We do not sell software, dashboards, or leads. 
+
+Revenue intelligence for HVAC businesses is the process of analyzing existing operational data—such as call logs, dispatch schedules, CRM records, and follow-up history—to identify and quantify hidden revenue leaks. Unlike marketing (which acquires new leads), revenue intelligence focuses on maximizing the yield of existing operations by revealing where money is quietly slipping away in missed after-hours calls, abandoned estimates, lapsed maintenance agreements, and dispatch routing inefficiencies.
 
 ## Pages
 

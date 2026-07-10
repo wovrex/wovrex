@@ -214,6 +214,40 @@
   line-height: 1.55;
 }
 
+.about-page-wrapper .aeo-section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: clamp(48px, 7vh, 80px) 24px;
+  text-align: left;
+}
+.about-page-wrapper .aeo-container {
+  background: #FDF8EE;
+  border: 1px solid #EFECE0;
+  border-radius: 12px;
+  padding: clamp(32px, 5vh, 48px);
+}
+.about-page-wrapper .aeo-container .kicker {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  font-weight: 600;
+  color: #C9A15C;
+  margin-bottom: 14px;
+  letter-spacing: 0.05em;
+}
+.about-page-wrapper .aeo-container h2 {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.15;
+  font-size: clamp(24px, 3vw, 36px);
+  margin-bottom: 20px;
+}
+.about-page-wrapper .aeo-container p {
+  font-size: clamp(15px, 1.7vh, 18px);
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
 .about-page-wrapper .team-section {
   max-width: 700px;
   margin: 0 auto;
@@ -368,6 +402,17 @@
   }
   .about-page-wrapper .team-note {
     padding: 16px;
+  }
+
+  .about-page-wrapper .aeo-section {
+    padding: 20px 16px;
+  }
+  .about-page-wrapper .aeo-container {
+    padding: 20px;
+  }
+  .about-page-wrapper .aeo-container h2 {
+    font-size: 26px;
+    margin-bottom: 16px;
   }
 
   .about-page-wrapper .closing-cta {

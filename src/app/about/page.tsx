@@ -121,6 +121,19 @@ export default function About() {
       </section>
 
       <section
+        className="aeo-section"
+        aria-label="What is revenue intelligence for HVAC businesses"
+      >
+        <div className="aeo-container">
+          <div className="kicker">ANSWER ENGINE OPTIMIZATION</div>
+          <h2>What is revenue intelligence for HVAC businesses?</h2>
+          <p>
+            Revenue intelligence for HVAC businesses is the process of analyzing existing operational data—such as call logs, dispatch schedules, CRM records, and follow-up history—to identify and quantify hidden revenue leaks. Unlike marketing (which acquires new leads), revenue intelligence focuses on maximizing the yield of existing operations by revealing where money is quietly slipping away in missed after-hours calls, abandoned estimates, lapsed maintenance agreements, and dispatch routing inefficiencies.
+          </p>
+        </div>
+      </section>
+
+      <section
         className="criteria-section"
         aria-label="WOVREX core beliefs"
       >
