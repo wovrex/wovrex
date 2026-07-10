@@ -56,6 +56,16 @@ export default function Navbar() {
               </li>
               <li>
                 <Link
+                  href="/articles"
+                  className={
+                    pathname.startsWith("/articles") ? "active" : ""
+                  }
+                >
+                  Articles
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/about"
                   className={
                     pathname.startsWith("/about") ? "active" : ""

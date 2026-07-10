@@ -3,11 +3,11 @@ import BookCTA from "@/components/BookCTA";
 import "./how-we-look.css";
 
 export const metadata: Metadata = {
-  title: "How We Look",
+  title: "How WOVREX Reviews Your HVAC Business — The Diagnostic Process",
   description:
     "Three steps, no guesswork. WOVREX pulls your existing HVAC business data, cross-references it across systems, and writes down exactly what it means in plain language with a dollar figure attached.",
   openGraph: {
-    title: "How WOVREX Works | Three Steps, No Guesswork",
+    title: "How WOVREX Reviews Your HVAC Business — The Diagnostic Process",
     description:
       "We pull what already exists in your HVAC business, line it up against other records, and write down what it means. Plain findings, real numbers.",
     url: "https://wovrex.site/how-we-look",

@@ -42,7 +42,7 @@ const barlowCondensed = Barlow_Condensed({
 export const metadata: Metadata = {
   metadataBase: new URL("https://wovrex.site"),
   title: {
-    default: "WOVREX | Revenue Intelligence for Established HVAC Companies",
+    default: "WOVREX — Revenue Intelligence for Established HVAC Businesses",
     template: "%s | WOVREX",
   },
   description:
@@ -78,7 +78,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://wovrex.site",
     siteName: "WOVREX",
-    title: "WOVREX | Revenue Intelligence for Established HVAC Companies",
+    title: "WOVREX — Revenue Intelligence for Established HVAC Businesses",
     description:
       "WOVREX helps established HVAC companies uncover hidden revenue leaks in missed calls, lapsed maintenance, abandoned estimates, and dispatch inefficiencies.",
     images: [
@@ -92,7 +92,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "WOVREX | Revenue Intelligence for Established HVAC Companies",
+    title: "WOVREX — Revenue Intelligence for Established HVAC Businesses",
     description:
       "Uncover hidden revenue leaks in your HVAC business. Missed calls, lapsed maintenance, abandoned estimates.",
     images: ["/og-image.png"],

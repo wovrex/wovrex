@@ -4,11 +4,11 @@ import BookCTA from "@/components/BookCTA";
 import "./about.css";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "About WOVREX — Revenue Intelligence Company for HVAC",
   description:
     "WOVREX was built for HVAC owners who stopped asking if they are busy and started asking where the money actually goes. We reveal, we do not sell. Specific findings, not confident adjectives.",
   openGraph: {
-    title: "About WOVREX | Revenue Intelligence for HVAC",
+    title: "About WOVREX — Revenue Intelligence Company for HVAC",
     description:
       "We built WOVREX for the HVAC owner who wants clarity, not another dashboard. Plain answers about where revenue quietly slips away.",
     url: "https://wovrex.site/about",
