@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { openCalendly } from "@/utils/calendly";
 
 export default function Navbar() {
   const [isActive, setIsActive] = useState(false);
@@ -67,9 +68,9 @@ export default function Navbar() {
           </div>
 
           <div className="navbar-cta-container">
-            <Link href="/book" className="cta-button">
+            <a href="#" onClick={openCalendly} className="cta-button">
               Take a closer look
-            </Link>
+            </a>
           </div>
         </div>
 

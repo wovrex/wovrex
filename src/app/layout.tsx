@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Plus_Jakarta_Sans, Outfit, IBM_Plex_Mono, Barlow_Condensed } from "next/font/google";
 import "@/styles/global.css";
 import Navbar from "@/components/Navbar";
@@ -130,8 +131,10 @@ export default function RootLayout({
           type="font/otf"
           crossOrigin="anonymous"
         />
+        <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
       </head>
       <body suppressHydrationWarning className={`${plusJakarta.variable} ${outfit.variable} ${ibmPlexMono.variable} ${barlowCondensed.variable}`} style={{ backgroundColor: '#F9F8F6' }}>
+        <Script src="https://assets.calendly.com/assets/external/widget.js" strategy="lazyOnload" />
         <SmoothScroll>
           <Navbar />
           <main>{children}</main>

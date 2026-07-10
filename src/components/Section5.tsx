@@ -2,6 +2,7 @@
 
 import React, { useState, useRef } from "react";
 import Link from "next/link";
+import { openCalendly } from "@/utils/calendly";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -71,7 +72,7 @@ export default function Section5() {
           <p className="body-copy">
             Here&apos;s exactly what those fifteen minutes look like,<span className="desktop-only-text"><br />So there&apos;s nothing to guess at before you book.</span>
           </p>
-          <Link href="/book" className="cta-btn">Book the fifteen minutes</Link>
+          <button onClick={openCalendly} className="cta-btn">Book the fifteen minutes</button>
         </div>
 
         <div className="call-card" ref={cardRef}>

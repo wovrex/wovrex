@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import BookCTA from "@/components/BookCTA";
 import "./about.css";
 
 export const metadata: Metadata = {
@@ -171,9 +172,9 @@ export default function About() {
       >
         <h2>Curious what we&apos;d find in yours?</h2>
         <p>Fifteen minutes. No slide deck. No pressure either way.</p>
-        <Link href="/book" className="cta-button">
+        <BookCTA className="cta-button">
           Check the rest with us <span>&rarr;</span>
-        </Link>
+        </BookCTA>
         <div className="fine-print">
           We&apos;ll tell you honestly if we can help.
         </div>

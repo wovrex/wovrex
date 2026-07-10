@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import Link from "next/link";
+import { openCalendly } from "@/utils/calendly";
 
 interface Finding {
   category: string;
@@ -133,7 +133,7 @@ export default function FindingsClient() {
           Every business leaks money somewhere different. We would rather show
           you yours than talk about someone else&apos;s.
         </p>
-        <Link href="/book" className="cta-button">Check the rest with us</Link>
+        <button onClick={openCalendly} className="cta-button">Check the rest with us</button>
         <div className="fine-print">Fifteen minutes. No slide deck.</div>
       </section>
     </div>

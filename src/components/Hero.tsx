@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from 'react';
+import { openCalendly } from '@/utils/calendly';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { gsap } from 'gsap';
@@ -95,7 +96,7 @@ export default function Hero() {
             WOVREX helps established <strong>HVAC</strong> companies understand what quietly slips away between all of it.
           </p>
           <div className="hero-ctas">
-            <Link href="/book" className="cta-button">See what we see</Link>
+            <a href="#" onClick={openCalendly} className="cta-button">See what we see</a>
             <Link href="/how-we-look" className="cta-button secondary-cta">How we uncover it</Link>
           </div>
         </div>
