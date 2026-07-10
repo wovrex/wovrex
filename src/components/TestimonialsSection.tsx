@@ -3,6 +3,7 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import Image from 'next/image';
+import { openCalendly } from '@/utils/calendly';
 
 const testimonials = [
   {
@@ -88,6 +89,7 @@ export default function TestimonialsSection() {
         </motion.p>
         <motion.button 
           className="testi-cta"
+          onClick={openCalendly}
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6, delay: 0.2 }}

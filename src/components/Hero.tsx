@@ -172,6 +172,7 @@ function LazyVideo({ src, muted, isPlaying = true }: { src: string; muted: boole
     <video
       ref={videoRef}
       className="hero-video"
+      aria-label="Background video"
       src={shouldLoad ? src : undefined}
       poster={src.replace('/vid/', '/vid_poster/').replace('.mp4', '.webp')}
       preload={shouldLoad ? "metadata" : "none"}

@@ -1,0 +1,69 @@
+.not-found-container {
+  min-height: calc(100vh - 90px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  background-color: var(--background);
+}
+
+.nf-label {
+  font-family: var(--font-ibm-plex-mono), monospace;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.not-found-container h1 {
+  font-family: var(--font-qurova), serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  line-height: 1.1;
+  color: var(--text-dark);
+  margin: 0;
+  margin-bottom: 1rem;
+}
+
+.not-found-container p {
+  font-family: var(--font-plus-jakarta), sans-serif;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: var(--text-muted);
+  max-width: 500px;
+  line-height: 1.6;
+  margin: 0;
+  margin-bottom: 3rem;
+}
+
+.nf-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--text-dark);
+  color: #fff;
+  font-family: var(--font-ibm-plex-mono), monospace;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  padding: 1rem 2rem;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.nf-back-btn:hover {
+  background: #000;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.nf-back-btn svg {
+  transition: transform 0.2s ease;
+}
+
+.nf-back-btn:hover svg {
+  transform: translateX(-4px);
+}
