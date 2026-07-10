@@ -1,5 +1,4 @@
 import Script from 'next/script';
-import '../styles/global.css'; // Just in case, though it's in layout
 
 export default function BookingPage() {
   return (
